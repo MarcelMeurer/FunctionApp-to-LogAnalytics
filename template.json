@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01XX",
+            "defaultValue": "testaf01XXYY",
             "type": "String"
         },
         "componentsName": {
@@ -14,10 +14,7 @@
             "defaultValue": "web",
             "type": "String"
         },
-        "serverfarms_WestEuropePlan_name": {
-            "defaultValue": "WestEuropePlan",
-            "type": "String"
-        },
+
         "storageAccountsName": {
             "defaultValue": "testaf01",
             "type": "String"
@@ -35,8 +32,8 @@
 	        "subscriptionId": {
               "value": "[subscription().subscriptionId]"
             },
-			"resourcegroup": {
-              "value": "[resourceGroup().name]-MMM"
+			"serverfarmsName": {
+              "value": "ServerFarmPlan"
             }
 	},
     "resources": [
@@ -101,12 +98,12 @@
                 "capacity": 0
             },
             "kind": "functionapp",
-            "name": "[parameters('serverfarms_WestEuropePlan_name')]",
+            "name": "[variables('serverfarmsName')]",
             "apiVersion": "2016-09-01",
             "location": "West Europe",
             "scale": null,
             "properties": {
-                "name": "[parameters('serverfarms_WestEuropePlan_name')]",
+                "name": "[variables('serverfarmsName')]",
                 "workerTierName": null,
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
@@ -144,7 +141,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_WestEuropePlan_name'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarmsName'))]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
@@ -158,7 +155,7 @@
                 "httpsOnly": false
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_WestEuropePlan_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]"
             ]
         },
         {
