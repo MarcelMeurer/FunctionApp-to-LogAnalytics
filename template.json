@@ -2,11 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_testaf01_name": {
-            "defaultValue": "testaf01",
+        "sitesName": {
+            "defaultValue": "testaf01XX",
             "type": "String"
         },
-        "components_testaf01_name": {
+        "componentsName": {
             "defaultValue": "testaf01",
             "type": "String"
         },
@@ -18,15 +18,15 @@
             "defaultValue": "WestEuropePlan",
             "type": "String"
         },
-        "storageAccounts_testaf01_name": {
+        "storageAccountsName": {
             "defaultValue": "testaf01",
             "type": "String"
         },
-        "alertrules_Failure_Anomalies___testaf01_name": {
+        "alertrules_Failure_AnomaliesName": {
             "defaultValue": "Failure Anomalies - testaf01",
             "type": "String"
         },
-        "hostNameBindings_testaf01.azurewebsites.net_name": {
+        "hostNameBindings": {
             "defaultValue": "testaf01.azurewebsites.net",
             "type": "String"
         }
@@ -43,7 +43,7 @@
         {
             "type": "microsoft.insights/components",
             "kind": "web",
-            "name": "[parameters('components_testaf01_name')]",
+            "name": "[parameters('componentsName')]",
             "apiVersion": "2015-05-01",
             "location": "westeurope",
             "tags": {},
@@ -64,7 +64,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_testaf01_name')]",
+            "name": "[parameters('storageAccountsName')]",
             "apiVersion": "2018-07-01",
             "location": "westeurope",
             "tags": {},
@@ -120,7 +120,7 @@
         {
             "type": "Microsoft.Web/sites",
             "kind": "functionapp",
-            "name": "[parameters('sites_testaf01_name')]",
+            "name": "[parameters('sitesName')]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -128,7 +128,7 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sites_testaf01_name'),'.azurewebsites.net')]",
+                        "name": "[concat(parameters('sitesName'),'.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -136,7 +136,7 @@
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sites_testaf01_name'),'.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('sitesName'),'.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -163,7 +163,7 @@
         },
         {
             "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('config_web_name'))]",
+            "name": "[concat(parameters('sitesName'), '/', parameters('config_web_name'))]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -280,12 +280,12 @@
                 "reservedInstanceCount": 0
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_testaf01_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
             ]
         },
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('hostNameBindings_testaf01.azurewebsites.net_name'))]",
+            "name": "[concat(parameters('sitesName'), '/', parameters('hostNameBindings'))]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -295,7 +295,7 @@
                 "hostNameType": "Verified"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_testaf01_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
             ]
         }
     ]
