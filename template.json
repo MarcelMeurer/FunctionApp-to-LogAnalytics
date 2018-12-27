@@ -44,16 +44,20 @@
             "type": "String"
         }
     },
-    "variables": {},
+    "variables": {
+	        "subscriptionId": {
+              "value": "[subscription().subscriptionId]"
+            }
+	},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/microsoft.insights/alertrules/Failure Anomalies - testaf01'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/microsoft.insights/alertrules/Failure Anomalies - testaf01'.",
             "type": "microsoft.insights/alertrules",
             "name": "[parameters('alertrules_Failure_Anomalies___testaf01_name')]",
             "apiVersion": "2014-04-01",
             "location": "West Europe",
             "tags": {
-                "hidden-link:/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/microsoft.insights/components/testaf01": "Resource"
+                "hidden-link:/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/microsoft.insights/components/testaf01": "Resource"
             },
             "scale": null,
             "properties": {
@@ -83,7 +87,7 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/microsoft.insights/components/testaf01'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/microsoft.insights/components/testaf01'.",
             "type": "microsoft.insights/components",
             "kind": "web",
             "name": "[parameters('components_testaf01_name')]",
@@ -101,7 +105,7 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/Microsoft.Storage/storageAccounts/testaf01'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/Microsoft.Storage/storageAccounts/testaf01'.",
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
                 "name": "Standard_LRS",
@@ -136,7 +140,7 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/Microsoft.Web/serverfarms/WestEuropePlan'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/Microsoft.Web/serverfarms/WestEuropePlan'.",
             "type": "Microsoft.Web/serverfarms",
             "sku": {
                 "name": "Y1",
@@ -163,7 +167,7 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01'.",
             "type": "Microsoft.Web/sites",
             "kind": "functionapp",
             "name": "[parameters('sites_testaf01_name')]",
@@ -208,7 +212,7 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01/config/web'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01/config/web'.",
             "type": "Microsoft.Web/sites/config",
             "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('config_web_name'))]",
             "apiVersion": "2016-08-01",
@@ -331,7 +335,7 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/c33ceb5b-9891-445a-ba4a-46366f9a9761/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01/hostNameBindings/testaf01.azurewebsites.net'.",
+            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/_Test-Function/providers/Microsoft.Web/sites/testaf01/hostNameBindings/testaf01.azurewebsites.net'.",
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('hostNameBindings_testaf01.azurewebsites.net_name'))]",
             "apiVersion": "2016-08-01",
