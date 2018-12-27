@@ -2,19 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-	    "location":{
-         "type":"string",
-			 "allowedValues":[
-				"Australia Southeast",
-				"East US",
-				"Japan East",
-				"Southeast Asia",
-				"UK South",
-				"West Central US",
-				"West Europe"
-			 ],
-			 "defaultValue":"West Europe"
-		},
         "sites_testaf01_name": {
             "defaultValue": "testaf01",
             "type": "String"
@@ -54,43 +41,6 @@
 	},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/microsoft.insights/alertrules/Failure Anomalies - testaf01'.",
-            "type": "microsoft.insights/alertrules",
-            "name": "[parameters('alertrules_Failure_Anomalies___testaf01_name')]",
-            "apiVersion": "2014-04-01",
-            "location": "West Europe",
-            "tags": {
-                "hidden-link:/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/microsoft.insights/components/testaf01": "Resource"
-            },
-            "scale": null,
-            "properties": {
-                "name": "[parameters('alertrules_Failure_Anomalies___testaf01_name')]",
-                "description": "",
-                "isEnabled": true,
-                "condition": {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource": {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_testaf01_name'))]",
-                        "metricNamespace": null,
-                        "metricName": "advanced::A3108E3D-5E26-44CF-B232-783F5E20EF10::ewAiAEgAeQBwAGUAcgBpAG8AbgBBAHAAcABsAGkAYwBhAHQAaQBvAG4AUwBpAGQAIgA6AG4AdQBsAGwALAAiAEgAeQBwAGUAcgBpAG8AbgBTAHUAYgBqAGUAYwB0AFMAaQBkACIAOgBuAHUAbABsACwAIgBIAHkAcABlAHIAaQBvAG4ATwBiAHMAZQByAHYAZQByAFMAaQBkACIAOgBuAHUAbABsACwAIgBDAHUAcwB0AG8AbQBlAHIAQQBjAGMAbwB1AG4AdABJAGQAIgA6ACIAMAAwADAAMAAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAwADAAMAAwADAAMAAwADAAIgAsACIAQQBwAHAAbABpAGMAYQB0AGkAbwBuAE4AYQBtAGUAIgA6AG4AdQBsAGwALAAiAEEAcABwAGwAaQBjAGEAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAFAAcgBvAGYAaQBsAGUASQBkACIAOgAwACwAIgBXAGkAbgBkAG8AdwBTAGkAegBlAEkAbgBNAGkAbgB1AHQAZQBzACIAOgA2ADAALAAiAE0AZQB0AHIAaQBjAE4AYQBtAGUAIgA6ACIAIgAsACIAVABoAHIAZQBzAGgAbwBsAGQAIgA6ADIALgAwACwAIgBBAGwAZQByAHQAVABlAG0AcABsAGEAdABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAE4AYQBtAGUAIgA6ACIAIgAsACIAUgB1AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AIgA6ACIAIgAsACIAUgBlAHMAbwB1AHIAYwBlAEkAZAAiADoAbgB1AGwAbAAsACIAUwB1AGIAcwBjAHIAaQBwAHQAaQBvAG4ASQBkACIAOgBuAHUAbABsACwAIgBBAGcAZwByAGUAZwBhAHQAZQBGAHUAbgBjAHQAaQBvAG4AIgA6ACIAIgAsACIAQwBvAG0AcABhAHIAaQBzAG8AbgBPAHAAZQByAGEAdABvAHIAIgA6ACIAewBcACIAQgBhAHMAZQBsAGkAbgBlAFQAaQBtAGUAcwBwAGEAbgBcACIAOgBcACIAMAAwADoANAAwADoAMAAwAFwAIgAsAFwAIgBJAG4AcwBpAGcAaAB0AHMAUwBlAHIAdgBpAGMAZQBMAGEAZwBcACIAOgBcACIAMAAwADoAMAAwADoAMAAwAFwAIgAsAFwAIgBCAHUAZgBmAGUAcgBUAGkAbQBlAFwAIgA6AFwAIgAwADAAOgAwADEAOgAwADAAXAAiACwAXAAiAEIAbABvAGIAUwB0AG8AcgBhAGcAZQBMAG8AZwBnAGkAbgBnAEUAbgBhAGIAbABlAGQAXAAiADoAZgBhAGwAcwBlACwAXAAiAFUAcwBlAHIAUwB1AHAAcAByAGUAcwBzAGkAbwBuAHMAXAAiADoAbgB1AGwAbAAsAFwAIgBQAHIAbwBmAGkAbABlAEkAZABcACIAOgAwACwAXAAiAEUAbQBhAGkAbABUAHkAcABlAFwAIgA6ADAALABcACIAUgBkAGQARgBhAGkAbAB1AHIAZQBzAFMAcABpAGsAZQBUAGgAcgBlAHMAaABvAGwAZABcACIAOgAzAC4AMAAsAFwAIgBSAGEAdwBQAHIAbwBhAGMAdABpAHYAZQBSAHUAbABlAEMAbwBuAGYAaQBnAFwAIgA6AG4AdQBsAGwAfQAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8AQwB1AHMAdABvAG0AIgA6AGYAYQBsAHMAZQAsACIAQwB1AHMAdABvAG0ARQBtAGEAaQBsAHMARQBuAGMAbwBkAGUAZAAiADoAIgAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8ATwB3AG4AZQByAHMAIgA6AGYAYQBsAHMAZQB9AA=="
-                    },
-                    "operator": "GreaterThan",
-                    "threshold": 2,
-                    "windowSize": "PT1H"
-                },
-                "action": {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                    "sendToServiceOwners": true,
-                    "customEmails": []
-                }
-            },
-            "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('components_testaf01_name'))]"
-            ]
-        },
-        {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/microsoft.insights/components/testaf01'.",
             "type": "microsoft.insights/components",
             "kind": "web",
             "name": "[parameters('components_testaf01_name')]",
@@ -108,7 +58,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/Microsoft.Storage/storageAccounts/testaf01'.",
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
                 "name": "Standard_LRS",
@@ -143,7 +92,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/Microsoft.Web/serverfarms/WestEuropePlan'.",
             "type": "Microsoft.Web/serverfarms",
             "sku": {
                 "name": "Y1",
@@ -170,7 +118,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/Microsoft.Web/sites/testaf01'.",
             "type": "Microsoft.Web/sites",
             "kind": "functionapp",
             "name": "[parameters('sites_testaf01_name')]",
@@ -215,7 +162,6 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/Microsoft.Web/sites/testaf01/config/web'.",
             "type": "Microsoft.Web/sites/config",
             "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('config_web_name'))]",
             "apiVersion": "2016-08-01",
@@ -338,7 +284,6 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/[variables('subscriptionId')]/resourceGroups/[variables('resourcegroup')]/providers/Microsoft.Web/sites/testaf01/hostNameBindings/testaf01.azurewebsites.net'.",
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(parameters('sites_testaf01_name'), '/', parameters('hostNameBindings_testaf01.azurewebsites.net_name'))]",
             "apiVersion": "2016-08-01",
