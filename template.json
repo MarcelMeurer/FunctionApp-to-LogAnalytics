@@ -33,6 +33,7 @@
               "value": "[subscription().subscriptionId]"
             },
 			"serverfarmsName": {
+			  "type": "String",
               "value": "ServerFarmPlan"
             }
 	},
