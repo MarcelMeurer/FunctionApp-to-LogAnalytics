@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01XXYY123456888",
+            "defaultValue": "testaf01",
             "type": "String"
         },
         "componentsName": {
@@ -99,12 +99,12 @@
                 "capacity": 0
             },
             "kind": "functionapp",
-            "name": "variables('serverfarmsName')",
+            "name": "[variables('serverfarmsName')]",
             "apiVersion": "2016-09-01",
             "location": "West Europe",
             "scale": null,
             "properties": {
-                "name": "variables('serverfarmsName')",
+                "name": "[variables('serverfarmsName')]",
                 "workerTierName": null,
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
@@ -142,7 +142,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', [variables('serverfarmsName')])]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
@@ -156,7 +156,7 @@
                 "httpsOnly": false
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]"
+                "[resourceId('Microsoft.Web/serverfarms', [variables('serverfarmsName')])]"
             ]
         },
         {
