@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01xxxx",
+            "defaultValue": "testaf01",
             "type": "String"
         },
         "componentsName": {
@@ -32,10 +32,7 @@
 	        "subscriptionId": {
               "value": "[subscription().subscriptionId]"
             },
-			"serverfarmsName": {
-			  "type": "String",
-              "value": "ServerFarmPlan"
-            }
+			"serverfarmsName": "ServerFarmPlan"
 	},
     "resources": [
         {
