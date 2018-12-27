@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01XXYY123456",
+            "defaultValue": "testaf01XXYY123456888",
             "type": "String"
         },
         "componentsName": {
@@ -33,7 +33,7 @@
               "value": "[subscription().subscriptionId]"
             },
 			"serverfarmsName": {
-			  "type": "String",
+			  
               "value": "ServerFarmPlan"
             }
 	},
@@ -142,7 +142,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarmsName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
