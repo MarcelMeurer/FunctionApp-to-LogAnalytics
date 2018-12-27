@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01",
+            "defaultValue": "testaf01xxxx",
             "type": "String"
         },
         "componentsName": {
