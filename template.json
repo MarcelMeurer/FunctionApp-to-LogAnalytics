@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01XXYY123",
+            "defaultValue": "testaf01XXYY123456",
             "type": "String"
         },
         "componentsName": {
@@ -99,12 +99,12 @@
                 "capacity": 0
             },
             "kind": "functionapp",
-            "name": "[variables('serverfarmsName')]",
+            "name": "variables('serverfarmsName')",
             "apiVersion": "2016-09-01",
             "location": "West Europe",
             "scale": null,
             "properties": {
-                "name": "[variables('serverfarmsName')]",
+                "name": "variables('serverfarmsName')",
                 "workerTierName": null,
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
