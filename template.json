@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01",
+            "defaultValue": "testaf01xx",
             "type": "String"
         },
         "componentsName": {
@@ -139,7 +139,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', [variables('serverfarmsName')])]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
@@ -153,7 +153,7 @@
                 "httpsOnly": false
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', [variables('serverfarmsName')])]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]"
             ]
         },
         {
