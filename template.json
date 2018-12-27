@@ -35,6 +35,19 @@
 			"serverfarmsName": "ServerFarmPlan"
 	},
     "resources": [
+		{ 
+			"apiVersion": "2018-02-01",
+			"name": "pid-7c96a56d-143b-4108-88fb-9c337c7bb38e", // use your generated GUID here
+			"type": "Microsoft.Resources/deployments",
+			"properties": {
+				"mode": "Incremental",
+				"template": {
+					"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+					"contentVersion": "1.0.0.0",
+					"resources": []
+				}
+			}
+		},
         {
             "type": "microsoft.insights/components",
             "kind": "web",
