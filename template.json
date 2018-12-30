@@ -294,7 +294,7 @@
         },
       {
         "type": "Microsoft.Web/sites/hostNameBindings",
-        "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'azurewebsites.net')]",
+        "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'.azurewebsites.net')]",
         "apiVersion": "2016-08-01",
         "location": "West Europe",
         "scale": null,
