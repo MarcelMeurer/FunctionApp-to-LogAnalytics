@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
-      "defaultValue": "testaf01xx5",
+      "defaultValue": "testaf01xx7",
       "type": "String"
     },
     "Workspace_Id": {
@@ -49,10 +49,7 @@
       "name": "[parameters('siteName')]",
       "apiVersion": "2015-05-01",
       "location": "[resourceGroup().location]",
-      "tags": {
-        "[concat('hidden-link:',resourceGroup().id,'/providers/Microsoft.Web/sites/',parameters('siteName'))]": "Resource"
-
-      },
+      "tags": {},
       "scale": null,
       "properties": {
         "Application_Type": "web",
@@ -130,7 +127,8 @@
         "httpsOnly": false
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]",
+        "[resourceId('Microsoft.Insights/components/', parameters('siteName'))]"
       ],
       "resources": [
         {
@@ -146,10 +144,10 @@
           "properties": {
             "FUNCTIONS_EXTENSION_VERSION": "~1",
             "AppInsights_InstrumentationKey": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
-            "Workspace_Id": "parameters('Workspace_Id')",
-            "Workspace_Key": "parameters('Workspace_Key')",
-            "LogType": "parameters('LogType')",
-            "TimeField": "parameters('TimeField')",
+            "Workspace_Id": "[parameters('Workspace_Id')]",
+            "Workspace_Key": "[parameters('Workspace_Key')]",
+            "LogType": "[parameters('LogType')]",
+            "TimeField": "[parameters('TimeField')]",
             "JsonMustContain": ""
           }
         },
