@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sitesName": {
-            "defaultValue": "testaf01xxYY",
+            "defaultValue": "testaf01xx",
             "type": "String"
         },
         "componentsName": {
@@ -167,7 +167,24 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', variables('serverfarmsName'))]"
-            ]
+            ],
+          "resources": [
+            {
+              "name": "appsettings",
+              "type": "config",
+              "apiVersion": "2015-08-01",
+              "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
+              ],
+              "tags": {
+                "displayName": "AppSettings"
+              },
+              "properties": {
+                "key1": "value1",
+                "key2": "value2"
+              }
+            }
+          ]
         },
         {
             "type": "Microsoft.Web/sites/config",
@@ -291,19 +308,6 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
             ]
         },
-	    {
-		  "apiVersion": "2014-11-01",
-		  "name": "appsettings",
-		  "type": "config",
-		  "dependsOn": [
-			"[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
-		  ],
-		  "properties": {
-			"AppSettingKey1": "Some value",
-			"AppSettingKey2": "My second setting",
-			"AppSettingKey3": "My third setting"
-		  }
-		},
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(parameters('sitesName'), '/', parameters('hostNameBindings'))]",
