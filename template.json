@@ -180,8 +180,11 @@
                 "displayName": "AppSettings"
               },
               "properties": {
-                "key1": "value1",
-                "key2": "value2"
+                "Workspace_Id": "Enter your LogAnalytics workspace id here",
+                "Workspace_Key": "Enter your LogAnalytics workspace key here",
+                "LogType": "MyCustomLogTypeName",
+                "TimeField": "",
+                "JsonMustContain": ""
               }
             }
           ]
