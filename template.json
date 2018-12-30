@@ -24,9 +24,8 @@
     }
   },
   "variables": {
-    "subscriptionId": {
-      "value": "[subscription().subscriptionId]"
-    },
+    "subscriptionId" : "[subscription().subscriptionId]",
+	"resourcegroupName": "[resourceGroup().name]",
     "serverfarmsName": "ServerFarmPlan",
     "storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]",
 
@@ -51,7 +50,9 @@
       "name": "[parameters('siteName')]",
       "apiVersion": "2015-05-01",
       "location": "westeurope",
-      "tags": {},
+	"tags": {
+		"[concat('hidden-link:/subscriptions/',variables('subscriptionId'),'/resourceGroups/',variables('resourcegroupName'),'/providers/Microsoft.Web/sites/',parameters('siteName'))]"
+	},
       "scale": null,
       "properties": {
         "Application_Type": "web",
