@@ -296,7 +296,7 @@
 		  "name": "appsettings",
 		  "type": "config",
 		  "dependsOn": [
-			"[resourceId('Microsoft.Web/Sites', parameters('sitesName'))]"
+			"[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
 		  ],
 		  "properties": {
 			"AppSettingKey1": "Some value",
