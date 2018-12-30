@@ -47,40 +47,6 @@
         "dependsOn": []
       },
         {
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS",
-                "tier": "Standard"
-            },
-            "kind": "Storage",
-            "name": "[variables('storageAccountsName')]",
-            "apiVersion": "2018-07-01",
-            "location": "westeurope",
-            "tags": {},
-            "scale": null,
-            "properties": {
-                "networkAcls": {
-                    "bypass": "AzureServices",
-                    "virtualNetworkRules": [],
-                    "ipRules": [],
-                    "defaultAction": "Allow"
-                },
-                "supportsHttpsTrafficOnly": false,
-                "encryption": {
-                    "services": {
-                        "file": {
-                            "enabled": true
-                        },
-                        "blob": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        },
-        {
             "type": "Microsoft.Web/serverfarms",
             "sku": {
                 "name": "Y1",
@@ -202,7 +168,6 @@
             "detailedErrorLoggingEnabled": false,
             "publishingUsername": "[concat('$',parameters('siteName'))]",
             "publishingPassword": null,
-            "appSettings": null,
             "azureStorageAccounts": {},
             "metadata": null,
             "connectionStrings": null,
