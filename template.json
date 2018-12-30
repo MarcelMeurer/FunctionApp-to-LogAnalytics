@@ -5,22 +5,6 @@
         "siteName": {
             "defaultValue": "testaf01xx",
             "type": "String"
-        },
-        "componentsName": {
-            "defaultValue": "testaf01",
-            "type": "String"
-        },
-        "config_web_name": {
-            "defaultValue": "web",
-            "type": "String"
-        },
-        "alertrules_Failure_AnomaliesName": {
-            "defaultValue": "Failure Anomalies - testaf01",
-            "type": "String"
-        },
-        "hostNameBindings": {
-            "defaultValue": "testaf01.azurewebsites.net",
-            "type": "String"
         }
     },
     "variables": {
@@ -45,23 +29,23 @@
 				}
 			}
 		},
-        {
-            "type": "microsoft.insights/components",
-            "kind": "web",
-            "name": "[parameters('componentsName')]",
-            "apiVersion": "2015-05-01",
-            "location": "westeurope",
-            "tags": {},
-            "scale": null,
-            "properties": {
-                "Application_Type": "web",
-                "Flow_Type": null,
-                "Request_Source": "IbizaWebAppExtensionCreate",
-                "HockeyAppId": null,
-                "SamplingPercentage": null
-            },
-            "dependsOn": []
+      {
+        "type": "microsoft.insights/components",
+        "kind": "web",
+        "name": "[parameters('siteName')]",
+        "apiVersion": "2015-05-01",
+        "location": "westeurope",
+        "tags": {},
+        "scale": null,
+        "properties": {
+          "Application_Type": "web",
+          "Flow_Type": null,
+          "Request_Source": "IbizaWebAppExtensionCreate",
+          "HockeyAppId": null,
+          "SamplingPercentage": null
         },
+        "dependsOn": []
+      },
         {
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
@@ -188,7 +172,7 @@
         },
         {
             "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('siteName'), '/', parameters('config_web_name'))]",
+            "name": "[concat(parameters('siteName'), '/web')]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -308,20 +292,20 @@
                 "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
             ]
         },
-        {
-            "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('siteName'), '/', parameters('hostNameBindings'))]",
-            "apiVersion": "2016-08-01",
-            "location": "West Europe",
-            "scale": null,
-            "properties": {
-                "siteName": "testaf01",
-                "domainId": null,
-                "hostNameType": "Verified"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
-            ]
-        }
+      {
+        "type": "Microsoft.Web/sites/hostNameBindings",
+        "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'azurewebsites.net')]",
+        "apiVersion": "2016-08-01",
+        "location": "West Europe",
+        "scale": null,
+        "properties": {
+          "siteName": "testaf01",
+          "domainId": null,
+          "hostNameType": "Verified"
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
+        ]
+      }
     ]
 }

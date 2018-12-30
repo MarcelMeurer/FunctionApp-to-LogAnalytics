@@ -6,6 +6,3 @@ Start
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-
-## Deploy to your Azure subscription (test)
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
