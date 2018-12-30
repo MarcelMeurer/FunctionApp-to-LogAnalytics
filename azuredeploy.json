@@ -14,11 +14,6 @@
             "defaultValue": "web",
             "type": "String"
         },
-
-        "storageAccountsName": {
-            "defaultValue": "testaf01",
-            "type": "String"
-        },
         "alertrules_Failure_AnomaliesName": {
             "defaultValue": "Failure Anomalies - testaf01",
             "type": "String"
@@ -32,7 +27,9 @@
 	        "subscriptionId": {
               "value": "[subscription().subscriptionId]"
             },
-			"serverfarmsName": "ServerFarmPlan"
+			"serverfarmsName": "ServerFarmPlan",
+			"storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]" ,
+
 	},
     "resources": [
 		{ 
@@ -72,7 +69,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccountsName')]",
+            "name": "[variables('storageAccountsName')]",
             "apiVersion": "2018-07-01",
             "location": "westeurope",
             "tags": {},
