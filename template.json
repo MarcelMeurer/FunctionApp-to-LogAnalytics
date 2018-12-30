@@ -283,7 +283,7 @@
                 "xManagedServiceIdentityId": null,
                 "ipSecurityRestrictions": null,
                 "http20Enabled": false,
-                "minTlsVersion": "1.2",
+                "minTlsVersion": "1.0",
                 "ftpsState": "AllAllowed",
                 "reservedInstanceCount": 0
             },
@@ -291,6 +291,19 @@
                 "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
             ]
         },
+	    {
+		  "apiVersion": "2014-11-01",
+		  "name": "appsettings",
+		  "type": "config",
+		  "dependsOn": [
+			"[resourceId('Microsoft.Web/Sites', parameters('sitesName'))]"
+		  ],
+		  "properties": {
+			"AppSettingKey1": "Some value",
+			"AppSettingKey2": "My second setting",
+			"AppSettingKey3": "My third setting"
+		  }
+		},
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "name": "[concat(parameters('sitesName'), '/', parameters('hostNameBindings'))]",
