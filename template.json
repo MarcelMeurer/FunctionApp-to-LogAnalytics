@@ -2,8 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "location": {
+      "type" : "string"
+    },
     "siteName": {
-      "defaultValue": "testaf01xx3",
+      "defaultValue": "testaf01xx4",
       "type": "String"
     },
     "Workspace_Id": {
