@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
-      "defaultValue": "testaf01xx",
+      "defaultValue": "testaf01xx2",
       "type": "String"
     },
     "Workspace_Id": {
