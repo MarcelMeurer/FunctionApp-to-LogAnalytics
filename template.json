@@ -2,11 +2,8 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type" : "string"
-    },
     "siteName": {
-      "defaultValue": "testaf01xx4",
+      "defaultValue": "testaf01xx5",
       "type": "String"
     },
     "Workspace_Id": {
@@ -51,9 +48,9 @@
       "kind": "web",
       "name": "[parameters('siteName')]",
       "apiVersion": "2015-05-01",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "tags": {
-        "[concat('hidden-link:/subscriptions/',variables('subscriptionId'),'/resourceGroups/',variables('resourcegroupName'),'/providers/Microsoft.Web/sites/',parameters('siteName'))]": "Resource"
+        "[concat('hidden-link:',resourceGroup().id,'/providers/Microsoft.Web/sites/',parameters('siteName'))]": "Resource"
 
       },
       "scale": null,
@@ -78,7 +75,7 @@
       "kind": "functionapp",
       "name": "[variables('serverfarmsName')]",
       "apiVersion": "2016-09-01",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "name": "[variables('serverfarmsName')]",
@@ -97,7 +94,7 @@
       "kind": "functionapp",
       "name": "[parameters('siteName')]",
       "apiVersion": "2016-08-01",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "enabled": true,
@@ -173,7 +170,7 @@
       "type": "Microsoft.Web/sites/config",
       "name": "[concat(parameters('siteName'), '/web')]",
       "apiVersion": "2016-08-01",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "numberOfWorkers": 1,
@@ -294,7 +291,7 @@
       "type": "Microsoft.Web/sites/hostNameBindings",
       "name": "[concat(parameters('siteName'), '/', parameters('siteName'),'.azurewebsites.net')]",
       "apiVersion": "2016-08-01",
-      "location": "[parameters('location')]",
+      "location": "[resourceGroup().location]",
       "scale": null,
       "properties": {
         "siteName": "[parameters('siteName')]",
