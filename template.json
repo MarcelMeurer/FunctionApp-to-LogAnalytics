@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sitesName": {
+        "siteName": {
             "defaultValue": "testaf01xx",
             "type": "String"
         },
@@ -12,11 +12,6 @@
         },
         "config_web_name": {
             "defaultValue": "web",
-            "type": "String"
-        },
-
-        "storageAccountsName": {
-            "defaultValue": "testaf01",
             "type": "String"
         },
         "alertrules_Failure_AnomaliesName": {
@@ -32,7 +27,9 @@
 	        "subscriptionId": {
               "value": "[subscription().subscriptionId]"
             },
-			"serverfarmsName": "ServerFarmPlan"
+			"serverfarmsName": "ServerFarmPlan",
+			"storageAccountsName": "[toLower(uniqueString(parameters('siteName')) )]" ,
+
 	},
     "resources": [
 		{ 
@@ -72,7 +69,7 @@
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccountsName')]",
+            "name": "[variables('storageAccountsName')]",
             "apiVersion": "2018-07-01",
             "location": "westeurope",
             "tags": {},
@@ -128,7 +125,7 @@
         {
             "type": "Microsoft.Web/sites",
             "kind": "functionapp",
-            "name": "[parameters('sitesName')]",
+            "name": "[parameters('siteName')]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -136,7 +133,7 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sitesName'),'.azurewebsites.net')]",
+                        "name": "[concat(parameters('siteName'),'.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -144,7 +141,7 @@
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sitesName'),'.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('siteName'),'.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -174,7 +171,7 @@
               "type": "config",
               "apiVersion": "2015-08-01",
               "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
               ],
               "tags": {
                 "displayName": "AppSettings"
@@ -191,7 +188,7 @@
         },
         {
             "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('sitesName'), '/', parameters('config_web_name'))]",
+            "name": "[concat(parameters('siteName'), '/', parameters('config_web_name'))]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -308,12 +305,12 @@
                 "reservedInstanceCount": 0
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
             ]
         },
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('sitesName'), '/', parameters('hostNameBindings'))]",
+            "name": "[concat(parameters('siteName'), '/', parameters('hostNameBindings'))]",
             "apiVersion": "2016-08-01",
             "location": "West Europe",
             "scale": null,
@@ -323,7 +320,7 @@
                 "hostNameType": "Verified"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sitesName'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('siteName'))]"
             ]
         }
     ]
