@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
-      "defaultValue": "testaf01xx7",
+      "defaultValue": "testaf01xx8",
       "type": "String"
     },
     "Workspace_Id": {
@@ -143,7 +143,7 @@
           },
           "properties": {
             "FUNCTIONS_EXTENSION_VERSION": "~1",
-            "AppInsights_InstrumentationKey": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
             "Workspace_Id": "[parameters('Workspace_Id')]",
             "Workspace_Key": "[parameters('Workspace_Key')]",
             "LogType": "[parameters('LogType')]",
