@@ -144,6 +144,8 @@
             "displayName": "AppSettings"
           },
           "properties": {
+            "FUNCTIONS_EXTENSION_VERSION": "~1",
+            "AppInsights_InstrumentationKey": "[reference(concat('microsoft.insights/components/', parameters('siteName'))).InstrumentationKey]",
             "Workspace_Id": "parameters('Workspace_Id')",
             "Workspace_Key": "parameters('Workspace_Key')",
             "LogType": "parameters('LogType')",
