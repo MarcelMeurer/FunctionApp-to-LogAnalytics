@@ -5,6 +5,22 @@
     "siteName": {
       "defaultValue": "testaf01xx",
       "type": "String"
+    },
+    "Workspace_Id": {
+      "defaultValue": "Enter your LogAnalytics workspace id here (or later in AppSettings)",
+      "type": "String"
+    },
+    "Workspace_Key": {
+      "defaultValue": "Enter your LogAnalytics workspace key here (or later in AppSettings)",
+      "type": "String"
+    },
+    "LogType": {
+      "defaultValue": "IoTData",
+      "type": "String"
+    },
+    "TimeField": {
+      "defaultValue": "TimeStamp",
+      "type": "String"
     }
   },
   "variables": {
@@ -127,10 +143,10 @@
             "displayName": "AppSettings"
           },
           "properties": {
-            "Workspace_Id": "Enter your LogAnalytics workspace id here",
-            "Workspace_Key": "Enter your LogAnalytics workspace key here",
-            "LogType": "MyCustomLogTypeName",
-            "TimeField": "",
+            "Workspace_Id": "parameters('Workspace_Id')",
+            "Workspace_Key": "parameters('Workspace_Key')",
+            "LogType": "parameters('LogType')",
+            "TimeField": "parameters('TimeField')",
             "JsonMustContain": ""
           }
         },
