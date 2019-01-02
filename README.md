@@ -42,7 +42,7 @@ $data='{
 Invoke-WebRequest -Uri "https://testaf01xx8.azurewebsites.net/api/Send2LogAnalytics?code=xje5aQIMzPxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==" -Method POST -Body $data
 ```
 
-![PowerShell](.\images\PowerShell.png)
+![PowerShell](./images/PowerShell.png)
 
 ## With Stream Analytics
 
@@ -55,17 +55,17 @@ FROM
     [From-IoT-Hub]
 ```
 
-![StreamAnalytics-Query](.\images\StreamAnalytics-Query.png)
+![StreamAnalytics-Query](./images/StreamAnalytics-Query.png)
 
 **Output:**
 
 Enter your Azure Function parameters
 
-![StreamAnalytics-Output](.\images\StreamAnalytics-Output.png)
+![StreamAnalytics-Output](./images/StreamAnalytics-Output.png)
 
 ## Results in Log Analytics
 
-![LA1](.\images\LA1.png)
+![LA1](./images/LA1.png)
 
 For another data series
 
@@ -100,7 +100,7 @@ Deploy your Azure Function using the deploy to Azure button.
 
 Your Function app -> Platform features -> Application settings
 
-![AppSettings](.\images\AppSettings.png)
+![AppSettings](./images/AppSettings.png)
 
 ## Resources
 
@@ -117,7 +117,7 @@ After the deployment three resources are deployed and configured:
 
 Open your Azure Function and navigate to Functions -> Send2LogAnalytics -> </> Get function URL
 
-![FunctionURL](.\images\FunctionURL.png)
+![FunctionURL](./images/FunctionURL.png)
 
 This URL contains your private key.
 
