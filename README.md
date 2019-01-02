@@ -28,7 +28,7 @@ To allow pushing data via http-post I built this project. This project deploys a
 
 ## With Postman
 
-![Postman](.\images\Postman.png)
+![Postman](./images/Postman.png)
 
 ## With PowerShell
 
