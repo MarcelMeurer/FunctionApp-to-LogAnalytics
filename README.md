@@ -8,15 +8,12 @@ Microsoft offers with Log Analytics a cloud based big data service. Log Analytic
 
 Log Analytics key facts:
 
-\-          Cloud based
+- Cloud based
 
-\-          No data aggregation
-
-\-          Pay per upload and data retention
-
-\-          Powerful query language (kql: <https://docs.microsoft.com/en-us/azure/kusto/>)
-
-\-          Direct support for visualization on portal.azure.com
+- No data aggregation
+- Pay per upload and data retention
+- Powerful query language (kql: <https://docs.microsoft.com/en-us/azure/kusto/>)
+- Direct support for visualization on portal.azure.com
 
 I use Log Analytics for several project where data aggregation and analyzation are main tasks. If I write code, I push data directly to Log Analytics – including generating a SAS signature for each single upload.
 
@@ -108,9 +105,9 @@ After the deployment three resources are deployed and configured:
 
 - ServerFarmPlan:
   A consumption-based pricing plan for the Azure Functional App. See <https://azure.microsoft.com/en-us/pricing/details/functions/> to check the estimated costs billed to your subscription
-- <Site name> - Application Insights:
+- Site name - Application Insights:
   Application Insights to monitor the Azure Function itself
-- <Site name> - Azure Functional App:
+- Site name - Azure Functional App:
   The Azure Function containing the code
 
 ## Get the resource URL of the Azure Function
@@ -120,16 +117,3 @@ Open your Azure Function and navigate to Functions -> Send2LogAnalytics -> </> G
 ![FunctionURL](./images/FunctionURL.png)
 
 This URL contains your private key.
-
-
-  
-
- 
-
- 
-
- 
-
- 
-
- 
